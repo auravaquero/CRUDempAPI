@@ -1,0 +1,77 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<button type="button" class="btn btn-sm btn-success" style="margin-left:15%" (click) = "download()">Imprimir</button>
+  <div class="container" style="margin: center; align-items: center; ">
+    <h1>Ingreso de datos</h1>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-default"><strong>Bienvenido</strong></h3></div>
+      <div class="panel-heading"><h3 class="panel-title"><strong>Ingresa tus Datos </strong></h3></div>
+      <div class="panel-body">
+       <form #userPost="ngForm" role="form"  (ngSubmit)="onSubmit(userPost.value)">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Ingresa Id para modificar</label>
+        <input type="number" class="form-control"  name="id" placeholder="Ingresa id" ngModel>
+        <label for="exampleInputEmail1">Ingresa tu correo</label>
+        <input type="email" class="form-control"  name="email" placeholder="Ingresa Correo" ngModel>
+        <label for="exampleInputEmail1">Ingresa tu Nombre</label>
+        <input type="text" class="form-control" required name="nombre" placeholder="Ingresa nombre" ngModel>
+        <label for="exampleInputEmail1">Ingresa tu apellido</label>
+        <input type="text" class="form-control" required name="apellido" placeholder="Ingresa apellido" ngModel>
+        <label for="exampleInputEmail1">Ingresa tu numero de DUI</label>
+        <input type="text" class="form-control" required name="dui" placeholder="Ingresa DUI" ngModel>
+        <label for="exampleInputEmail1">Ingresa tu foto</label>
+        <img class="" [src]="urllink">
+        <input type="file" accept="image/*" (change) = "selectFile($event)" class="form-control" id="foto" placeholder="Ingresa ingresa fotografia">
+        <input type="password" class="form-control" name="contraseña" placeholder="Password" >
+        <input type="number" value=1 name="rol" ngModel  placeholder="Rol">
+        <input type="number" value=1 name="estado" ngModel placeholder="Estado" >
+      </div>
+      <button type="submit" class="btn btn-sm btn-success" >Nuevo Registro</button>
+    </form>
+      </div>
+    </div>
+    <div class="container">
+      <div style="margin-left:500px; ">
+        <form #userPost="ngForm" role="form"  (ngSubmit)= "onEnvio(userPost.value)">
+          <label for="id">Ingresa Id empleado para eleminar</label>
+          <input type="number" name="id" id="id">
+        </form>
+        <button type="submit" class="btn btn btn-danger">Eliminar Empleado</button>
+
+      </div>
+
+    </div>
+
+<div id="content" #content>
+<h2 style="text-align: center;">Datos empleados</h2>
+  <div class="container">
+    <div class="col col-3" style="margin-left:25%; margin-top: 2%;">
+  <div class="table ">
+    <table class="table" style="border: black;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">DUI</th>
+            <th scope="col">Foto Empleado</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>{{item.dui}}</td>
+            <td ><img src="./assets/fotoempleado/duiej.jpg" alt="{{item.nombre}} {{item.apellido}}" width="30" height="60"></td>
+            <td>{{item.email}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+
+
